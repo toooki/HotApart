@@ -17,44 +17,49 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class MemberRepositoryImplTest {
 
+    //스프링빈에서 자동삽입시키기
     @Autowired
     DataSource dataSource;
 
     @Autowired
     MemberRepositoryImpl memberRepository;
 
+    //멤버 삽입 테스트
     @Test
     void insertMember() {
-        Member member = new Member();
-        member.setNumber(1);
-        member.setEmail("orange@naver.com");
-        member.setId("orange7539");
-        member.setPw("1234");
-        member.setNickname("ILOrange2");
+        Member member = Member.builder()
+                .email("orange@naver.com")
+                .id("orange7539")
+                .pw("1234")
+                .nickname("ILOrange2")
+                .build();
+
 
         memberRepository.insertMember(member);
     }
 
+    //멤버삭제테스트
     @Test
     void deleteMember(){
         memberRepository.deleteMember("orange7539");
         System.out.println("성공적으로 삭제되었습니다.");
     }
 
+    //멤버 조회 테스트
     @Test
     void findMemberById(){
-        Member member1 = new Member();
-        member1.setNumber(2);
-        member1.setEmail("muojeso@naver.com");
-        member1.setId("muojeso7539");
-        member1.setPw("1234");
-        member1.setNickname("Mulsuo12");
+        Member member1 = Member.builder()
+                .email("muojeso@naver.com")
+                .id("muojeso7539")
+                .pw("1234")
+                .nickname("Mulsuo12")
+                .build();
 
         memberRepository.insertMember(member1);
 
         Optional<Member> member2 = memberRepository.findMemberById("muojeso7539");
 
-        Assertions.assertThat(member2.get()).isEqualTo(member1);
+        Assertions.assertThat(member2.get().getId()).isEqualTo(member1.getId());
     }
 
 }

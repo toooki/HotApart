@@ -13,22 +13,11 @@ import java.util.Optional;
 @Controller
 public class HomeController {
 
-
     MemberRepository memberRepository;
 
     @GetMapping("/")
     public String home(){
         return "home";
-    }
-
-    @PostMapping("/login")
-    public String login(@RequestParam("id") String id, @RequestParam("pw")String pw){
-        System.out.println("id = " + id + "pw = " +pw);
-
-        Optional<Member> member = memberRepository.findMemberById(id);
-
-
-        return "login";
     }
 
 

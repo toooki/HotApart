@@ -26,9 +26,9 @@ public class MemberRepositoryImpl implements MemberRepository{
     //멤버 삽입
     @Override
     public void insertMember(Member member) {
-        String sql = "INSERT INTO member(number, id, pw, email, nickname) VALUES(?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO member(id, pw, email, nickname) VALUES(?, ?, ?, ?)";
         jdbcTemplate.update(sql,
-                member.getNumber() ,member.getId(), member.getPw(), member.getEmail(), member.getNickname());
+                member.getId(), member.getPw(), member.getEmail(), member.getNickname());
 
 
         System.out.println("멤버를 데이터베이스에서 성공적으로 삽입완료했습니다.");
