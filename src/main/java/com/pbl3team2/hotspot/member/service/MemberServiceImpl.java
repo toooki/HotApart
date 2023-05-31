@@ -6,6 +6,8 @@ import com.pbl3team2.hotspot.member.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class MemberServiceImpl implements MemberService{
 
@@ -18,7 +20,7 @@ public class MemberServiceImpl implements MemberService{
 
 
     @Override
-    public void join(MemberFormDTO memberDto) {
+    public Member join(MemberFormDTO memberDto) {
         Member member = Member.builder()
                 .id(memberDto.getId())
                 .pw(memberDto.getPw())
@@ -27,5 +29,16 @@ public class MemberServiceImpl implements MemberService{
                 .build();
 
         memberRepository.insertMember(member);
+        return member;
+    }
+
+    @Override
+    public String login(String id, String pw) {
+        Optional<Member> member = memberRepository.findMemberById(id);
+        if(member.isEmpty() || member.get().getPw() != pw){
+            return null;
+        }
+
+        return "token"; // 임시코드
     }
 }

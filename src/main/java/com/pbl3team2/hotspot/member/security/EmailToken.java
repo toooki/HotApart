@@ -1,4 +1,4 @@
-package com.pbl3team2.hotspot.security;
+package com.pbl3team2.hotspot.member.security;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,13 +26,11 @@ public class EmailToken {
     private String id;
 
     private LocalDateTime expirationDate;
-
     private boolean expired;
-
-    private Long memberId;
+    private String memberId;
 
     //이메일 인증 토큰 생성
-    public static EmailToken createEmailToken(Long memberId){
+    public static EmailToken createEmailToken(String memberId){
         EmailToken emailToken = new EmailToken();
         emailToken.expirationDate = LocalDateTime.now().plusMinutes(EMAIL_TOKEN_EXPIRATION_TIME_VALUE); // 지금 시간으로부터 5분후 만료
         emailToken.expired = false;

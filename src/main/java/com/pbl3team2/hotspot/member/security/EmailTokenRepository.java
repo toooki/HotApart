@@ -1,4 +1,4 @@
-package com.pbl3team2.hotspot.security;
+package com.pbl3team2.hotspot.member.security;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

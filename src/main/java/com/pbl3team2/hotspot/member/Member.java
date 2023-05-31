@@ -31,6 +31,8 @@ public class Member {
     private String nickname;
 
 
+
+
 //    private Personal pI;
 //    private Favorite[] favorite;
 
