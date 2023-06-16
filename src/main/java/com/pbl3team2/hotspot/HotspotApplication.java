@@ -15,7 +15,7 @@ public class HotspotApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HotspotApplication.class, args);
-
+		System.out.println("안녕하셔유");
 	}
 }
 

@@ -1,4 +1,4 @@
-package com.pbl3team2.hotspot.member;
+package com.pbl3team2.hotspot.member.Optional;
 
 import lombok.Data;
 

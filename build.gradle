@@ -31,6 +31,10 @@ dependencies {
 	//스프링 시큐리티
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	testImplementation 'org.springframework.security:spring-security-test'
+	//토큰발급
+	implementation 'io.jsonwebtoken:jjwt-api:0.10.7'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.10.7'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.10.7'
 
 	//메일
 	implementation 'org.springframework.boot:spring-boot-starter-mail'

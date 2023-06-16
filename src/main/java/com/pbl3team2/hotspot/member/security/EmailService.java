@@ -28,7 +28,7 @@ public class EmailService {
         //지금예시는 유저의 인증내용 변경하는 방법입니다.
 
         //토큰의 유저 ID를 이용하여 유저 인증 정보를 가져온다.
-        Optional<Member> findMember = memberRepository.findMemberById(findEmailToken.getId());
+        Optional<Member> findMember = memberRepository.findMemberById(findEmailToken.getMemberId());
         findEmailToken.setTokenToUsed();
 
         if(findMember.isPresent()){

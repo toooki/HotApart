@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface MemberRepository{
 
-    void insertMember(Member member);
+    Member insertMember(Member member);
     void deleteMember(String id);
     Optional<Member> findMemberById(String id);
 

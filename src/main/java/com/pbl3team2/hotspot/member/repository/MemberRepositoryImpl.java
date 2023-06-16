@@ -25,13 +25,14 @@ public class MemberRepositoryImpl implements MemberRepository{
 
     //멤버 삽입
     @Override
-    public void insertMember(Member member) {
+    public Member insertMember(Member member) {
         String sql = "INSERT INTO member(id, pw, email, nickname) VALUES(?, ?, ?, ?)";
         jdbcTemplate.update(sql,
                 member.getId(), member.getPw(), member.getEmail(), member.getNickname());
 
 
         System.out.println("멤버를 데이터베이스에서 성공적으로 삽입완료했습니다.");
+        return member;
     }
 
     //멤버 삭제
@@ -46,8 +47,13 @@ public class MemberRepositoryImpl implements MemberRepository{
     @Override
     public Optional<Member> findMemberById(String id) {
         String sql = "SELECT * FROM member WHERE id = ?";
-
-        return Optional.of(jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Member.class), id));
+        Optional<Member> member1 = null;
+        try{
+            member1 = Optional.of(jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Member.class), id));
+        } catch (Exception ex){
+            System.out.println("멤버 조회에 실패하였습니다.");
+        }
+        return member1;
     }
 
 }
